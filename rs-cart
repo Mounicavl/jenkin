@@ -2,7 +2,7 @@ pipeline {
 
    agent any 
     environment {
-                     Nexus = credential('Nexus')
+                     Nexus = credentials('Nexus')
                      MAJOR_VERSION=1
                      ITERATION_NUMBER=2
                   }
