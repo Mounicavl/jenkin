@@ -29,7 +29,7 @@ pipeline {
                            sh '''
                            VERSION="${MAJOR_VERSION}.${ITERATION_NUMBER}.${BUILD_NUMBER}"
                            mv catalogue.tgz catalogue-${VERSION}.tgz
-                           curl -v -u admin:admin --upload-file catalogue-${VERSION}.tgz http://18.205.192.25:8081/repository/catalogue/catalogue-${VERSION}.tgz
+                           curl -v -u admin:admin --upload-file catalogue-${VERSION}.tgz http://3.236.251.255:8081/repository/catalogue/catalogue-${VERSION}.tgz
                            '''
 
                         }
