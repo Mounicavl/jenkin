@@ -4,7 +4,7 @@ agents any
    stages {
       stage(Clone repo) {
                     steps{
-                            git ""
+                            git "https://github.com/Mounicavl/jenkin.git"
                           }
                       }
       stage(NPM Install) {
