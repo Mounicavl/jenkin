@@ -2,12 +2,12 @@ pipeline {
 
 agents any 
    stages {
-      stage(Clone repo) {
+      stage('Clone repo') {
                     steps{
                             git "https://github.com/Mounicavl/jenkin.git"
                           }
                       }
-      stage(NPM Install) {
+      stage('NPM Install') {
                     steps {
                             sh label: '', script: '''
                             npm install
