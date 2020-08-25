@@ -29,7 +29,7 @@ pipeline {
                            '''
                            VERSION="${MAJOR_VERSION}.${ITERATION_NUMBER}.${BUILD_NUMBER}"
                            mv cart.tgz cart-${VERSION}.tgz
-                           sh 'curl -v -u ${Nexus_USR}:${Nexus_PSW} --upload-file cart-${VERSION}.tgz http://18.205.192.25:8081/repository/cart/cart-${VERSION}.tgz
+                           sh curl -v -u ${Nexus_USR}:${Nexus_PSW} --upload-file cart-${VERSION}.tgz http://18.205.192.25:8081/repository/cart/cart-${VERSION}.tgz
                            '''
 
                         }
