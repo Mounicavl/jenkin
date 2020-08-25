@@ -1,20 +1,20 @@
 pipeline {
 
-agents any 
-   stages {
-      stage('Clone repo') {
+   agent any 
+      stages {
+         stage('Clone repo') {
                     steps{
                             git "https://github.com/Mounicavl/jenkin.git"
                           }
                       }
-      stage('NPM Install') {
+         stage('NPM Install') {
                     steps {
                             sh label: '', script: '''
                             npm install
                               '''
                           }
                         }
-       stage(Archeive) {
+         stage(Archeive) {
                   steps {
                             sh 'tar -czf cart.tgz node_modules cart.js package.json'
                         }
