@@ -1,0 +1,20 @@
+pipeline {
+
+   agent any 
+      stages {
+         
+         stage('NPM Install') {
+                    steps {
+                            sh label: '', script: '''
+                            npm install
+                              '''
+                          }
+                        }
+         stage(Archeive) {
+                  steps {
+                            sh 'tar -czf catalogue.tgz node_modules catalogue.js package.json'
+                        }
+                      }
+            }
+  }
+ 
