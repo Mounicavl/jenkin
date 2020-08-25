@@ -1,8 +1,17 @@
 pipeline {
 
    agent any 
+    environment {
+                     
+                     MAJOR_VERSION=1
+                     ITERATION_NUMBER=2
+                  }
       stages {
-         
+         stage('Clone repo') {
+                    steps{
+                            git "https://github.com/Mounicavl/jenkin.git"
+                          }
+                      }
          stage('NPM Install') {
                     steps {
                             sh label: '', script: '''
@@ -12,9 +21,18 @@ pipeline {
                         }
          stage(Archeive) {
                   steps {
-                            sh 'tar -czf catalogue.tgz node_modules catalogue.js package.json'
+                            sh 'tar -czf catalogue.tgz node_modules cart.js package.json'
                         }
                       }
-            }
-  }
- 
+         stage('upload Artifact') {
+                  steps {
+                           sh '''
+                           VERSION="${MAJOR_VERSION}.${ITERATION_NUMBER}.${BUILD_NUMBER}"
+                           mv catalogue.tgz catalogue-${VERSION}.tgz
+                           curl -v -u admin:admin --upload-file catalogue-${VERSION}.tgz http://18.205.192.25:8081/repository/catalogue/catalogue-${VERSION}.tgz
+                           '''
+
+                        }
+                                }
+               }
+        }       
